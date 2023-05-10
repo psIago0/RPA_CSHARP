@@ -7,9 +7,10 @@ namespace PrimeiroProjeto.Test
     {
         public void GeraCpf()
         {
-            AbreGerador();
-            SelecionaUf();
+            AbrirGerador();
+            SelecionarUf();
             GerarCpf();
+            InserirArquivoCpf();
         }
     }
 }

@@ -21,6 +21,10 @@ namespace PrimeiroProjeto.Core
         {
             driver.FindElement(By.XPath(xpath)).SendKeys(value);
         }
+        public void Clear(string xpath)
+        {
+            driver.FindElement(By.XPath(xpath)).Clear();
+        }
 
         public void ClickId(string id)
         {

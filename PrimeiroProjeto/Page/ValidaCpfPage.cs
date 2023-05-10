@@ -1,18 +1,26 @@
 ﻿using NUnit.Framework;
 using System.Threading;
+using System;
+using System.IO;
 
 namespace PrimeiroProjeto.Page
 {
     public class ValidaCpfPage : GeraCpfPage
     {
-        public string GuardaCpf()
+        public string GuardarCpf()
         {
             Find("//*[@id=\'texto_cpf\']/span");
             string cpfGerado = GetValue("//*[@id=\'texto_cpf\']");
             return cpfGerado;
         }
 
-        public void FechaAnuncio1()
+        public string[] LerArquivoCpf()
+        {
+            string[] cpfs = File.ReadAllLines(caminhoDataBase + "/cpf.txt");
+            return cpfs;
+        }
+
+        public void FecharAnuncio1()
         {
             try
             {
@@ -24,16 +32,12 @@ namespace PrimeiroProjeto.Page
             }
         }
 
-        public void AbreValidador()
+        public void AbrirValidador()
         {
             Click("//*[@id='top-nav']/li[37]/a");
         }
 
-        public void EscreveCpf (string cpf)
-        {
-            SendKey("//*[@id=\'txt_cpf\']", cpf);
-        }
-        public void FechaAnuncio2()
+        public void FecharAnuncio2()
         {
             try
             {
@@ -45,16 +49,25 @@ namespace PrimeiroProjeto.Page
             }
         }
 
+        public void EscreverCpf(string cpf)
+        {
+            SendKey("//*[@id=\'txt_cpf\']", cpf);
+        }
+        public void LimparCpf()
+        {
+            Clear("//*[@id=\'txt_cpf\']");
+        }
+
         public void ValidarCpf()
         {
             Click("//*[@id=\"bt_validar_cpf\"]");
         }
 
-        public void ConfereValidacao()
+        public void ConferirValidacao()
         {
             Wait(3000);
             string resultado = GetValue("//*[@id='texto_resposta']");
-            System.Console.WriteLine("resultado: {0}.", resultado);
+            Console.WriteLine("resultado: {0}.", resultado);
         }
     }
 }

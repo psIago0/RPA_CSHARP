@@ -11,5 +11,7 @@ namespace PrimeiroProjeto.Core
 
         public bool headlessTest = false;
 
+        public string caminhoDataBase = "C:\\WEBSITES\\Projetos_C#\\PrimeiroProjeto\\DataBase";
+
     }
 }
